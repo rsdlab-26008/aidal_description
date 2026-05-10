@@ -1,0 +1,247 @@
+<?xml version="1.0"?>
+<robot name="RealMan_AIDAL" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="aidal_base.xacro" />
+  <xacro:include filename="rm_65_arm.xacro" />
+  <xacro:include filename="eg2_4c2_gripper.xacro" />
+
+  <xacro:aidal_base />
+
+  <xacro:rm_65_arm prefix="left_" parent="left_base_link">
+    <origin rpy="0 0 0" xyz="0 0 0.187"/>
+  </xacro:rm_65_arm>
+
+  <xacro:rm_65_arm prefix="right_" parent="right_base_link">
+    <origin rpy="0 0 3.141592653589793" xyz="0 0 0.187"/>
+  </xacro:rm_65_arm>
+
+  <xacro:eg2_4c2_gripper prefix="left_" parent="left_ee">
+    <origin xyz="0 0 0.004" rpy="0 0 1.5707963267948966"/>
+  </xacro:eg2_4c2_gripper>
+
+  <xacro:eg2_4c2_gripper prefix="right_" parent="right_ee">
+    <origin xyz="0 0 0.004" rpy="0 0 1.5707963267948966"/>
+  </xacro:eg2_4c2_gripper>
+
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <joint name="lift_joint">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="head_joint1">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="head_joint2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_joint1">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-1.274</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_joint2">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">1.152</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_joint3">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">1.850</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_joint4">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.297</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_joint5">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-1.414</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_joint6">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.768</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_joint1">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">1.274</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_joint2">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-1.152</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_joint3">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-1.850</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_joint4">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.297</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_joint5">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">1.414</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_joint6">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.768</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_4C2_Joint1">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_4C2_Joint2">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_4C2_Joint3">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_4C2_Joint4">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_4C2_Joint5">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="left_4C2_Joint6">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_4C2_Joint1">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_4C2_Joint2">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_4C2_Joint3">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_4C2_Joint4">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">-0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_4C2_Joint5">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+    <joint name="right_4C2_Joint6">
+      <command_interface name="position"/>
+      <state_interface name="position">
+        <param name="initial_value">0.82</param>
+      </state_interface>
+      <state_interface name="velocity"/>
+      <state_interface name="effort"/>
+    </joint>
+  </ros2_control>
+
+  <gazebo>
+    <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
+      <parameters>$(find aidal_moveit_config)/config/ros2_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+</robot>

@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="custom_gripper" params="prefix">
+
+  <link
+    name="${prefix}4C2_baselink">
+    <inertial>
+      <origin
+        xyz="1.5645E-05 -4.1838E-06 0.038"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0001"
+        ixy="-7.3167e-13"
+        ixz="2.0229e-08"
+        iyy="0.0001"
+        iyz="-4.5583e-09"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_baselink.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_baselink.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="${prefix}4C2_Link1">
+    <inertial>
+      <origin
+        xyz="0.0087669 0.009 0.013992"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0001"
+        ixy="-8.6739e-19"
+        ixz="-2.508e-07"
+        iyy="0.0001"
+        iyz="-1.3667e-18"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${prefix}4C2_Joint1"
+    type="revolute">
+    <origin
+      xyz="-0.04 -0.009 0.079"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}4C2_baselink" />
+    <child
+      link="${prefix}4C2_Link1" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0.82"
+      effort="1"
+      velocity="1" />
+    
+  </joint>
+  <link
+    name="${prefix}4C2_Link5">
+    <inertial>
+      <origin
+        xyz="0.011864 0.006 0.011367"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0001"
+        ixy="-9.8137e-14"
+        ixz="-9.4703e-08"
+        iyy="0.0001"
+        iyz="-6.212e-14"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${prefix}4C2_Joint5"
+    type="revolute">
+    <origin
+      xyz="0.0223 0.003 0.035591"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}4C2_Link1" />
+    <child
+      link="${prefix}4C2_Link5" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.82"
+      effort="1"
+      velocity="1" />
+    <mimic joint="${prefix}4C2_Joint1"/>
+  </joint>
+  <link
+    name="${prefix}4C2_Link2">
+    <inertial>
+      <origin
+        xyz="0.0087435 0.009 0.013955"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0001"
+        ixy="-1.0711e-18"
+        ixz="-2.6891e-07"
+        iyy="0.0001"
+        iyz="-1.6845e-18"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${prefix}4C2_Joint2"
+    type="revolute">
+    <origin
+      xyz="-0.03 -0.009 0.081"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}4C2_baselink" />
+    <child
+      link="${prefix}4C2_Link2" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0.82"
+      effort="1"
+      velocity="1" />
+    <mimic joint="${prefix}4C2_Joint1"/>
+  </joint>
+  <link
+    name="${prefix}4C2_Link3">
+    <inertial>
+      <origin
+        xyz="-0.0087435 0.009 0.013955"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0001"
+        ixy="1.0666e-18"
+        ixz="2.6891e-07"
+        iyy="0.0001"
+        iyz="-1.8084e-18"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${prefix}4C2_Joint3"
+    type="revolute">
+    <origin
+      xyz="0.03 -0.009 0.081"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}4C2_baselink" />
+    <child
+      link="${prefix}4C2_Link3" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.82"
+      upper="0"
+      effort="1"
+      velocity="1" />
+    <mimic joint="${prefix}4C2_Joint1" multiplier="-1"  offset="0"/>
+  </joint>
+  <link
+    name="${prefix}4C2_Link4">
+    <inertial>
+      <origin
+        xyz="-0.0087669 0.009 0.013992"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0001"
+        ixy="-9.5279e-19"
+        ixz="2.508e-07"
+        iyy="0.0001"
+        iyz="7.6863e-19"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${prefix}4C2_Joint4"
+    type="revolute">
+    <origin
+      xyz="0.04 -0.009 0.079"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}4C2_baselink" />
+    <child
+      link="${prefix}4C2_Link4" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-0.82"
+      upper="0"
+      effort="1"
+      velocity="1" />
+    <mimic joint="${prefix}4C2_Joint1" multiplier="-1"  offset="0"/>
+  </joint>
+  <link
+    name="${prefix}4C2_Link6">
+    <inertial>
+      <origin
+        xyz="-0.011864 0.006 0.011367"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.0001"
+        ixy="-9.8137e-14"
+        ixz="9.4703e-08"
+        iyy="0.0001"
+        iyz="6.2119e-14"
+        izz="0.0001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://aidal_description/meshes/EG2-4C2/4C2_Link6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="${prefix}4C2_Joint6"
+    type="revolute">
+    <origin
+      xyz="-0.0223 0.003 0.035591"
+      rpy="0 0 0" />
+    <parent
+      link="${prefix}4C2_Link4" />
+    <child
+      link="${prefix}4C2_Link6" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="0.82"
+      effort="1"
+      velocity="1" />
+    <mimic joint="${prefix}4C2_Joint1"/>
+  </joint>
+  <transmission name="gripper_finger1_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="${prefix}4C2_Joint1">
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="gripper_finger1_motor">
+      <mechanicalReduction>1</mechanicalReduction>
+      <hardwareInterface>PositionJointInterface</hardwareInterface>
+    </actuator>
+  </transmission>
+  </xacro:macro>
+</robot>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<robot name="aidal_ee" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:property name="PI" value="3.1415926535897931"/>
+  <!-- 独自に用意したエンドエフェクタのXacroを読み込む -->
+  <xacro:include filename="$(find aidal_description)/xacro/custom_eg2.xacro"/>
+
+  <xacro:macro name="aidal_ee" params="type:='EG2-4C2'">
+    <xacro:property name="gripper_type_norm" value="${str(type).upper()}"/>
+
+    <xacro:if value="${gripper_type_norm == 'EMPTY'}">
+      <link name="left_eef"/>
+      <link name="right_eef"/>
+      <joint name="left_ee_fix" type="fixed">
+        <parent link="left_ee"/>
+        <child link="left_eef"/>
+      </joint>
+      <joint name="right_ee_fix" type="fixed">
+        <parent link="right_ee"/>
+        <child link="right_eef"/>
+      </joint>
+    </xacro:if>
+
+    <xacro:if value="${gripper_type_norm == 'EG2-4C2'}">
+      <!-- 左グリッパーのインスタンス化 -->
+      <xacro:custom_gripper prefix="left_"/>
+      <joint name="left_gripper_fix" type="fixed">
+        <parent link="left_link6"/>
+        <child link="left_4C2_baselink"/>
+        <origin xyz="0 0 0.004" rpy="0 0 ${PI/2}"/>
+      </joint>
+
+      <!-- 右グリッパーのインスタンス化 -->
+      <xacro:custom_gripper prefix="right_"/>
+      <joint name="right_gripper_fix" type="fixed">
+        <parent link="right_link6"/>
+        <child link="right_4C2_baselink"/>
+        <origin xyz="0 0 0.004" rpy="0 0 ${PI/2}"/>
+      </joint>
+    </xacro:if>
+  </xacro:macro>
+</robot>
