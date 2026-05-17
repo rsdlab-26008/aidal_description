@@ -825,9 +825,21 @@
   </joint>
   <link name="right_eef">
     <inertial>
+      <!-- fix -->
       <mass value="0.1"/>
+      <!-- <mass value="2"/> -->
       <origin rpy="0 0 0" xyz="0 0 0"/>
-      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <!-- <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/> -->
+      <!-- <inertia ixx="0.01" ixy="0.01" ixz="0.01" iyy="0.01" iyz="0.01" izz="0.01"/> -->
+      <!-- fix -->
+      <inertia>
+        <ixx>0.001</ixx>
+        <iyy>0.001</iyy>
+        <izz>0.001</izz>
+        <ixy>0</ixy>
+        <ixz>0</ixz>
+        <iyz>0</iyz>
+      </inertia>
     </inertial>
   </link>
   <joint name="right_ee_fix" type="fixed">
@@ -842,8 +854,12 @@
   <link name="left_4C2_baselink">
     <inertial>
       <origin rpy="0 0 0" xyz="1.5645E-05 -4.1838E-06 0.038"/>
-      <mass value="0.072633"/>
-      <inertia ixx="5.095E-05" ixy="-7.3167E-13" ixz="2.0229E-08" iyy="6.0883E-05" iyz="-4.5583E-09" izz="1.933E-05"/>
+      <!-- <mass value="0.072633"/> -->
+      <!-- fix -->
+      <mass value="0.05"/>
+      <!-- <inertia ixx="5.095E-05" ixy="-7.3167E-13" ixz="2.0229E-08" iyy="6.0883E-05" iyz="-4.5583E-09" izz="1.933E-05"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -854,16 +870,23 @@
       </material>
     </visual>
     <collision>
+      <origin xyz="1.5645E-05 -4.1838E-06 0.038" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_baselink.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_baselink.STL"/> -->
+        <!-- fix -->
+        <box size="0.08 0.03 0.12"/>
       </geometry>
     </collision>
   </link>
   <link name="left_4C2_Link1">
     <inertial>
       <origin rpy="0 0 0" xyz="0.0087669 0.009 0.013992"/>
-      <mass value="0.0024292"/>
-      <inertia ixx="5.1061E-07" ixy="-8.6739E-19" ixz="-2.508E-07" iyy="5.7398E-07" iyz="-1.3667E-18" izz="2.6747E-07"/>
+      <!-- <mass value="0.0024292"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1061E-07" ixy="-8.6739E-19" ixz="-2.508E-07" iyy="5.7398E-07" iyz="-1.3667E-18" izz="2.6747E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -875,7 +898,7 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link1.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link1.STL"/> -->
       </geometry>
     </collision>
   </link>
@@ -889,8 +912,12 @@
   <link name="left_4C2_Link5">
     <inertial>
       <origin rpy="0 0 0" xyz="0.011864 0.006 0.011367"/>
-      <mass value="0.0045068"/>
-      <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="-9.4703E-08" iyy="5.3203E-07" iyz="-6.212E-14" izz="2.009E-07"/>
+      <!-- <mass value="0.0045068"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="-9.4703E-08" iyy="5.3203E-07" iyz="-6.212E-14" izz="2.009E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -901,8 +928,12 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="0.011864 0.006 0.021367" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link5.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link5.STL"/> -->
+        <!-- fix -->
+        <box size="0.02 0.03 0.02"/>
       </geometry>
     </collision>
   </link>
@@ -911,14 +942,20 @@
     <parent link="left_4C2_Link1"/>
     <child link="left_4C2_Link5"/>
     <axis xyz="0 1 0"/>
-    <limit effort="1" lower="0" upper="0.82" velocity="1"/>
+    <!-- <limit effort="1" lower="0" upper="0.82" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="0" upper="0.82" velocity="1"/>
     <mimic joint="left_4C2_Joint1"/>
   </joint>
   <link name="left_4C2_Link2">
     <inertial>
       <origin rpy="0 0 0" xyz="0.0087435 0.009 0.013955"/>
-      <mass value="0.0038971"/>
-      <inertia ixx="5.6941E-07" ixy="-1.0711E-18" ixz="-2.6891E-07" iyy="6.2305E-07" iyz="-1.6845E-18" izz="3.0871E-07"/>
+      <!-- <mass value="0.0038971"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.6941E-07" ixy="-1.0711E-18" ixz="-2.6891E-07" iyy="6.2305E-07" iyz="-1.6845E-18" izz="3.0871E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -929,8 +966,12 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="0.0087435 0.009 0.033955" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link2.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link2.STL"/> -->
+        <!-- fix -->3
+        <box size="0.02 0.03 0.03"/>
       </geometry>
     </collision>
   </link>
@@ -939,14 +980,20 @@
     <parent link="left_4C2_baselink"/>
     <child link="left_4C2_Link2"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="0" upper="0.82" velocity="1"/>
+    <!-- <limit effort="1" lower="0" upper="0.82" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="0" upper="0.82" velocity="1"/>
     <mimic joint="left_4C2_Joint1"/>
   </joint>
   <link name="left_4C2_Link3">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.0087435 0.009 0.013955"/>
-      <mass value="0.0038971"/>
-      <inertia ixx="5.6941E-07" ixy="1.0666E-18" ixz="2.6891E-07" iyy="6.2305E-07" iyz="-1.8084E-18" izz="3.0871E-07"/>
+      <!-- <mass value="0.0038971"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.6941E-07" ixy="1.0666E-18" ixz="2.6891E-07" iyy="6.2305E-07" iyz="-1.8084E-18" izz="3.0871E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -957,8 +1004,12 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="-0.0087435 0.009 0.033955" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link3.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link3.STL"/> -->
+        <!-- fix -->
+        <box size="0.02 0.03 0.03"/>
       </geometry>
     </collision>
   </link>
@@ -967,14 +1018,20 @@
     <parent link="left_4C2_baselink"/>
     <child link="left_4C2_Link3"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="-0.82" upper="0" velocity="1"/>
+    <!-- <limit effort="1" lower="-0.82" upper="0" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="-0.82" upper="0" velocity="1"/>
     <mimic joint="left_4C2_Joint1" multiplier="-1" offset="0"/>
   </joint>
   <link name="left_4C2_Link4">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.0087669 0.009 0.013992"/>
-      <mass value="0.0024292"/>
-      <inertia ixx="5.1061E-07" ixy="-9.5279E-19" ixz="2.508E-07" iyy="5.7398E-07" iyz="7.6863E-19" izz="2.6747E-07"/>
+      <!-- <mass value="0.0024292"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1061E-07" ixy="-9.5279E-19" ixz="2.508E-07" iyy="5.7398E-07" iyz="7.6863E-19" izz="2.6747E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -986,7 +1043,8 @@
     </visual>
     <collision>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link4.STL"/>
+        <!-- fix -->
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link4.STL"/> -->
       </geometry>
     </collision>
   </link>
@@ -995,14 +1053,20 @@
     <parent link="left_4C2_baselink"/>
     <child link="left_4C2_Link4"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="-0.82" upper="0" velocity="1"/>
+    <!-- <limit effort="1" lower="-0.82" upper="0" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="-0.82" upper="0" velocity="1"/>
     <mimic joint="left_4C2_Joint1" multiplier="-1" offset="0"/>
   </joint>
   <link name="left_4C2_Link6">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.011864 0.006 0.011367"/>
-      <mass value="0.0045068"/>
-      <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="9.4703E-08" iyy="5.3203E-07" iyz="6.2119E-14" izz="2.009E-07"/>
+      <!-- <mass value="0.0045068"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="9.4703E-08" iyy="5.3203E-07" iyz="6.2119E-14" izz="2.009E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1013,8 +1077,13 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="-0.011864 0.006 0.021367" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link6.STL"/>
+        <!-- fix -->
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link6.STL"/> -->
+        <!-- fix -->
+        <box size="0.02 0.03 0.02"/>
       </geometry>
     </collision>
   </link>
@@ -1023,17 +1092,23 @@
     <parent link="left_4C2_Link4"/>
     <child link="left_4C2_Link6"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="0" upper="0.82" velocity="1"/>
+    <!-- <limit effort="1" lower="0" upper="0.82" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="0" upper="0.82" velocity="1"/>
     <mimic joint="left_4C2_Joint1"/>
   </joint>
   <transmission name="left_gripper_finger1_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="left_4C2_Joint1">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <!-- <hardwareInterface>PositionJointInterface</hardwareInterface> -->
+      <!-- fix -->
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="left_gripper_finger1_motor">
       <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <!-- <hardwareInterface>PositionJointInterface</hardwareInterface> -->
+      <!-- fix -->
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </actuator>
   </transmission>
   <joint name="right_gripper_fix" type="fixed">
@@ -1044,8 +1119,12 @@
   <link name="right_4C2_baselink">
     <inertial>
       <origin rpy="0 0 0" xyz="1.5645E-05 -4.1838E-06 0.038"/>
-      <mass value="0.072633"/>
-      <inertia ixx="5.095E-05" ixy="-7.3167E-13" ixz="2.0229E-08" iyy="6.0883E-05" iyz="-4.5583E-09" izz="1.933E-05"/>
+      <!-- <mass value="0.072633"/> -->
+      <!-- fix -->
+      <mass value="0.05"/>
+      <!-- <inertia ixx="5.095E-05" ixy="-7.3167E-13" ixz="2.0229E-08" iyy="6.0883E-05" iyz="-4.5583E-09" izz="1.933E-05"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1056,16 +1135,23 @@
       </material>
     </visual>
     <collision>
+      <origin xyz="1.5645E-05 -4.1838E-06 0.038" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_baselink.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_baselink.STL"/> -->
+        <!-- fix -->
+        <box size="0.08 0.03 0.12"/>
       </geometry>
     </collision>
   </link>
   <link name="right_4C2_Link1">
     <inertial>
       <origin rpy="0 0 0" xyz="0.0087669 0.009 0.013992"/>
-      <mass value="0.0024292"/>
-      <inertia ixx="5.1061E-07" ixy="-8.6739E-19" ixz="-2.508E-07" iyy="5.7398E-07" iyz="-1.3667E-18" izz="2.6747E-07"/>
+      <!-- <mass value="0.0024292"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1061E-07" ixy="-8.6739E-19" ixz="-2.508E-07" iyy="5.7398E-07" iyz="-1.3667E-18" izz="2.6747E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1076,8 +1162,12 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <!-- <origin xyz="0.0087669 0.009 0.013992" rpy="0 0 0"/> -->
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link1.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link1.STL"/> -->
+        <!-- fix -->
+        <!-- <box><size>0.02 0.03 0.04</size></box> -->
       </geometry>
     </collision>
   </link>
@@ -1086,13 +1176,19 @@
     <parent link="right_4C2_baselink"/>
     <child link="right_4C2_Link1"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="0" upper="0.82" velocity="1"/>
+    <!-- <limit effort="1" lower="0" upper="0.82" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="0" upper="0.82" velocity="1"/>
   </joint>
   <link name="right_4C2_Link5">
     <inertial>
       <origin rpy="0 0 0" xyz="0.011864 0.006 0.011367"/>
-      <mass value="0.0045068"/>
-      <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="-9.4703E-08" iyy="5.3203E-07" iyz="-6.212E-14" izz="2.009E-07"/>
+      <!-- <mass value="0.0045068"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="-9.4703E-08" iyy="5.3203E-07" iyz="-6.212E-14" izz="2.009E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1103,8 +1199,14 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="0.011864 0.006 0.021367" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link5.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link5.STL"/> -->
+        <!-- fix -->
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link5.STL" scale="1.05 1.05 1.05"/> -->
+        <!-- fix -->
+        <box size="0.02 0.03 0.02"/>
       </geometry>
     </collision>
   </link>
@@ -1113,14 +1215,20 @@
     <parent link="right_4C2_Link1"/>
     <child link="right_4C2_Link5"/>
     <axis xyz="0 1 0"/>
-    <limit effort="1" lower="0" upper="0.82" velocity="1"/>
+    <!-- <limit effort="1" lower="0" upper="0.82" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="0" upper="0.82" velocity="1"/>
     <mimic joint="right_4C2_Joint1"/>
   </joint>
   <link name="right_4C2_Link2">
     <inertial>
       <origin rpy="0 0 0" xyz="0.0087435 0.009 0.013955"/>
-      <mass value="0.0038971"/>
-      <inertia ixx="5.6941E-07" ixy="-1.0711E-18" ixz="-2.6891E-07" iyy="6.2305E-07" iyz="-1.6845E-18" izz="3.0871E-07"/>
+      <!-- <mass value="0.0038971"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.6941E-07" ixy="-1.0711E-18" ixz="-2.6891E-07" iyy="6.2305E-07" iyz="-1.6845E-18" izz="3.0871E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1131,8 +1239,12 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="0.0087435 0.009 0.033955" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link2.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link2.STL"/> -->
+        <!-- fix -->3
+        <box size="0.02 0.03 0.03"/>
       </geometry>
     </collision>
   </link>
@@ -1141,14 +1253,20 @@
     <parent link="right_4C2_baselink"/>
     <child link="right_4C2_Link2"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="0" upper="0.82" velocity="1"/>
+    <!-- <limit effort="1" lower="0" upper="0.82" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="0" upper="0.82" velocity="1"/>
     <mimic joint="right_4C2_Joint1"/>
   </joint>
   <link name="right_4C2_Link3">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.0087435 0.009 0.013955"/>
-      <mass value="0.0038971"/>
-      <inertia ixx="5.6941E-07" ixy="1.0666E-18" ixz="2.6891E-07" iyy="6.2305E-07" iyz="-1.8084E-18" izz="3.0871E-07"/>
+      <!-- <mass value="0.0038971"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.6941E-07" ixy="1.0666E-18" ixz="2.6891E-07" iyy="6.2305E-07" iyz="-1.8084E-18" izz="3.0871E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1159,8 +1277,12 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="-0.0087435 0.009 0.033955" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link3.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link3.STL"/> -->
+        <!-- fix -->
+        <box size="0.02 0.03 0.03"/>
       </geometry>
     </collision>
   </link>
@@ -1169,14 +1291,20 @@
     <parent link="right_4C2_baselink"/>
     <child link="right_4C2_Link3"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="-0.82" upper="0" velocity="1"/>
+    <!-- <limit effort="1" lower="-0.82" upper="0" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="-0.82" upper="0" velocity="1"/>
     <mimic joint="right_4C2_Joint1" multiplier="-1" offset="0"/>
   </joint>
   <link name="right_4C2_Link4">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.0087669 0.009 0.013992"/>
-      <mass value="0.0024292"/>
-      <inertia ixx="5.1061E-07" ixy="-9.5279E-19" ixz="2.508E-07" iyy="5.7398E-07" iyz="7.6863E-19" izz="2.6747E-07"/>
+      <!-- <mass value="0.0024292"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1061E-07" ixy="-9.5279E-19" ixz="2.508E-07" iyy="5.7398E-07" iyz="7.6863E-19" izz="2.6747E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1187,8 +1315,11 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <!-- <origin xyz="-0.0087669 0.009 0.013992" rpy="0 0 0"/> -->
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link4.STL"/>
+        <!-- fix -->
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link4.STL"/> -->
       </geometry>
     </collision>
   </link>
@@ -1197,14 +1328,20 @@
     <parent link="right_4C2_baselink"/>
     <child link="right_4C2_Link4"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="-0.82" upper="0" velocity="1"/>
+    <!-- <limit effort="1" lower="-0.82" upper="0" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="-0.82" upper="0" velocity="1"/>
     <mimic joint="right_4C2_Joint1" multiplier="-1" offset="0"/>
   </joint>
   <link name="right_4C2_Link6">
     <inertial>
       <origin rpy="0 0 0" xyz="-0.011864 0.006 0.011367"/>
-      <mass value="0.0045068"/>
-      <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="9.4703E-08" iyy="5.3203E-07" iyz="6.2119E-14" izz="2.009E-07"/>
+      <!-- <mass value="0.0045068"/> -->
+      <!-- fix -->
+      <mass value="0.03"/>
+      <!-- <inertia ixx="5.1288E-07" ixy="-9.8137E-14" ixz="9.4703E-08" iyy="5.3203E-07" iyz="6.2119E-14" izz="2.009E-07"/> -->
+      <!-- fix -->
+      <inertia ixx="1e-4" iyy="1e-4" izz="1e-4" ixy="0" ixz="0" iyz="0"/>
     </inertial>
     <visual>
       <geometry>
@@ -1215,8 +1352,14 @@
       </material>
     </visual>
     <collision>
+      <!-- fix -->
+      <origin xyz="-0.011864 0.006 0.021367" rpy="0 0 0"/>
       <geometry>
-        <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link6.STL"/>
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link6.STL"/> -->
+        <!-- fix -->
+        <!-- <mesh filename="package://aidal_description/meshes/EG2-4C2/4C2_Link6.STL" scale="1.05 1.05 1.05"/> -->
+        <!-- fix -->
+        <box size="0.02 0.03 0.02"/>
       </geometry>
     </collision>
   </link>
@@ -1225,17 +1368,23 @@
     <parent link="right_4C2_Link4"/>
     <child link="right_4C2_Link6"/>
     <axis xyz="0 -1 0"/>
-    <limit effort="1" lower="0" upper="0.82" velocity="1"/>
+    <!-- <limit effort="1" lower="0" upper="0.82" velocity="1"/> -->
+    <!-- fix -->
+    <limit effort="50" lower="0" upper="0.82" velocity="1"/>
     <mimic joint="right_4C2_Joint1"/>
   </joint>
   <transmission name="right_gripper_finger1_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="right_4C2_Joint1">
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <!-- <hardwareInterface>PositionJointInterface</hardwareInterface> -->
+      <!-- fix -->
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </joint>
     <actuator name="right_gripper_finger1_motor">
       <mechanicalReduction>1</mechanicalReduction>
-      <hardwareInterface>PositionJointInterface</hardwareInterface>
+      <!-- <hardwareInterface>PositionJointInterface</hardwareInterface> -->
+      <!-- fix -->
+      <hardwareInterface>EffortJointInterface</hardwareInterface>
     </actuator>
   </transmission>
   <ros2_control name="GazeboSystem" type="system">
@@ -1255,7 +1404,10 @@
     <joint name="lift_joint">
       <command_interface name="position"/>
       <state_interface name="position">
-        <param name="initial_value">0.455</param>
+        <!-- <param name="initial_value">0.455</param> -->
+        <param name="initial_value">0.5</param>
+        <!-- test -->
+        <!-- <param name="initial_value">0.6</param> -->
       </state_interface>
       <state_interface name="velocity"/>
       <state_interface name="effort"/>
@@ -1478,8 +1630,9 @@
       </ros>
     </plugin>
   </gazebo>
+
   <!-- グリッパ指リンクのコンタクト設定：トレーを弾き飛ばさないように -->
-  <gazebo reference="left_4C2_Link1">
+  <!-- <gazebo reference="left_4C2_Link1">
     <mu1>1.5</mu1>
     <mu2>1.5</mu2>
     <kp>1e4</kp>
@@ -1526,8 +1679,9 @@
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.01</maxVel>
-  </gazebo>
-  <gazebo reference="right_4C2_Link1">
+  </gazebo> -->
+
+  <!-- <gazebo reference="right_4C2_Link1">
     <mu1>1.5</mu1>
     <mu2>1.5</mu2>
     <kp>1e4</kp>
@@ -1574,6 +1728,226 @@
     <kd>10.0</kd>
     <minDepth>0.001</minDepth>
     <maxVel>0.01</maxVel>
+  </gazebo> -->
+
+  <!-- fix -->
+  <gazebo reference="left_4C2_Link1">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Link2">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Link3">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Link4">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Link5">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Link6">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Joint1">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Joint2">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Joint3">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Joint4">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Joint5">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="left_4C2_Joint6">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <!-- fix -->
+  <gazebo reference="right_4C2_Link1">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Link2">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Link3">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Link4">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Link5">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Link6">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Joint1">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Joint2">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Joint3">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Joint4">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Joint5">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
+  </gazebo>
+  <gazebo reference="right_4C2_Joint6">
+    <kp>1e7</kp>
+    <kd>1000</kd>
+    <mu1>20</mu1>
+    <mu2>20</mu2>
+    <minDepth>0.01</minDepth>
+    <maxVel>0.0</maxVel>
+    <selfCollide>true</selfCollide>
   </gazebo>
 
   <gazebo reference="left_wheel_link">
